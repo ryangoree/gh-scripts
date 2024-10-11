@@ -15,8 +15,6 @@ const DAY_MS = 1000 * 60 * 60 * 24;
 
 export default command({
   description: 'Get release stats for a repository',
-  isMiddleware: false,
-  requiresSubcommands: false,
 
   options: {
     owner: {
@@ -103,9 +101,9 @@ export default command({
 
         const projectName =
           tag.scope && tag.name ? `${tag.scope}/${tag.name}` : tag.name || repo;
-        const projectData = (stats[projectName] ||= {
+        const projectData = (stats[projectName] ??= {
           latest: release,
-          original: undefined,
+          original: release,
           majorReleases: [],
           minorReleases: [],
           patchReleases: [],
@@ -122,9 +120,8 @@ export default command({
           continue;
         }
 
-        const originalVersion =
-          projectData.original && semver.parse(projectData.original.version);
-        if (!originalVersion || version.major < originalVersion.major) {
+        const originalVersion = semver.parse(projectData.original.version);
+        if (version.major < originalVersion.major) {
           projectData.majorReleases.push(projectData.original);
           projectData.original = release;
         } else if (version.minor < originalVersion.minor) {
@@ -141,6 +138,10 @@ export default command({
       writeFileSync(cachedStatsPath, JSON.stringify(stats, null, 2));
     }
 
+    function getReleaseData(release) {
+      return new Date(release.published_at);
+    }
+
     console.log(`
 Projects: ${Object.entries(stats)
       .map(
@@ -149,16 +150,10 @@ Projects: ${Object.entries(stats)
             ...majorReleases,
             ...minorReleases,
             ...patchReleases,
-          ].map((r) => new Date(r.published_at));
-          const majorReleaseDates = majorReleases.map(
-            (r) => new Date(r.published_at)
-          );
-          const minorReleaseDates = minorReleases.map(
-            (r) => new Date(r.published_at)
-          );
-          const patchReleaseDates = patchReleases.map(
-            (r) => new Date(r.published_at)
-          );
+          ].map(getReleaseData);
+          const majorReleaseDates = majorReleases.map(getReleaseData);
+          const minorReleaseDates = minorReleases.map(getReleaseData);
+          const patchReleaseDates = patchReleases.map(getReleaseData);
           return `
   ${name}: (${latest.version})
     major: ${majorReleases.length}
