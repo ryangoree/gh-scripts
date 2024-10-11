@@ -1,8 +1,8 @@
 import { command } from 'clide-js';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { Octokit } from 'octokit';
 import semver from 'semver';
-import { getCachePath } from '../utils.js';
+import { loadCache } from '../utils.js';
 
 export default command({
   description: 'Update the cache for a repository',
@@ -46,10 +46,7 @@ export default command({
     const { pages, token } = await options.get(['pages', 'token']);
 
     // Cache
-    const cachePath = getCachePath(owner, repo);
-    const cachedData = existsSync(cachePath)
-      ? JSON.parse(readFileSync(cachePath, 'utf8'))
-      : undefined;
+    const { cachePath, data: cachedData } = loadCache(owner, repo);
     const latestReleaseDateCached = new Date(
       cachedData?.releases[0].published_at || 0
     );
@@ -60,9 +57,9 @@ export default command({
     const octokit = new Octokit({ auth: token });
 
     console.log(`Fetching releases for ${owner}/${repo}
-  last updated: ${cachedData ? Date(cachedData.lastUpdated) : 'never'}
-  max pages: ${pages}
-  page size: ${pageSize}`);
+  Last updated: ${cachedData ? Date(cachedData.lastUpdated) : 'never'}
+  Max pages: ${pages}
+  Page size: ${pageSize}`);
 
     const releases = [];
     for (let page = 1; page <= pages; page++) {
@@ -128,10 +125,10 @@ export default command({
     writeFileSync(cachePath, JSON.stringify(newData, null, 2));
 
     console.log(`Cache updated:
-  path: ${cachePath}
-  last updated: ${cachedData?.lastUpdated || 'n/a'} -> ${newData.lastUpdated}
-  release count: ${cachedData?.releaseCount || 0} -> ${newData.releaseCount}
-  new releases: ${releases.length - (cachedData?.releaseCount || 0)}`);
+  Path: ${cachePath}
+  lastUpdated: ${cachedData?.lastUpdated || 'n/a'} -> ${newData.lastUpdated}
+  releaseCount: ${cachedData?.releaseCount || 0} -> ${newData.releaseCount}
+  New releases: ${releases.length - (cachedData?.releaseCount || 0)}`);
 
     next(newData);
   },

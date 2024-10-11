@@ -1,0 +1,1029 @@
+{
+  "hyperdrive-frontend": {
+    "latest": {
+      "version": "1.18.4",
+      "published_at": "2024-10-11T00:30:49Z",
+      "tag": "v1.18.4",
+      "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.18.4"
+    },
+    "majorReleases": [
+      {
+        "version": "1.18.4",
+        "published_at": "2024-10-11T00:30:49Z",
+        "tag": "v1.18.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.18.4"
+      },
+      {
+        "version": "1.16.1",
+        "published_at": "2024-09-05T20:40:19Z",
+        "tag": "v1.16.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.16.1"
+      },
+      {
+        "version": "1.15.2",
+        "published_at": "2024-08-30T22:45:22Z",
+        "tag": "v1.15.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.15.2"
+      },
+      {
+        "version": "0.19.6",
+        "published_at": "2024-04-09T01:51:35Z",
+        "tag": "v0.19.6",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.19.6"
+      }
+    ],
+    "minorReleases": [
+      {
+        "version": "1.17.10",
+        "published_at": "2024-09-27T21:20:15Z",
+        "tag": "v1.17.10",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.10"
+      },
+      {
+        "version": "1.15.4",
+        "published_at": "2024-09-03T19:54:35Z",
+        "tag": "v1.15.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.15.4"
+      },
+      {
+        "version": "1.14.0",
+        "published_at": "2024-08-30T06:23:56Z",
+        "tag": "v1.14.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.14.0"
+      },
+      {
+        "version": "1.13.0",
+        "published_at": "2024-08-30T03:40:17Z",
+        "tag": "v1.13.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.13.0"
+      },
+      {
+        "version": "1.11.1",
+        "published_at": "2024-08-16T15:12:26Z",
+        "tag": "v1.11.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.11.1"
+      },
+      {
+        "version": "1.10.0",
+        "published_at": "2024-08-13T19:35:50Z",
+        "tag": "v1.10.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.10.0"
+      },
+      {
+        "version": "1.9.0",
+        "published_at": "2024-08-08T18:51:06Z",
+        "tag": "v1.9.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.9.0"
+      },
+      {
+        "version": "1.7.8",
+        "published_at": "2024-07-03T21:16:32Z",
+        "tag": "v1.7.8",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.7.8"
+      },
+      {
+        "version": "1.6.11",
+        "published_at": "2024-06-26T17:24:20Z",
+        "tag": "v1.6.11",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.11"
+      },
+      {
+        "version": "1.6.6",
+        "published_at": "2024-05-30T19:59:48Z",
+        "tag": "v1.6.6",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.6"
+      },
+      {
+        "version": "1.4.1",
+        "published_at": "2024-05-06T23:18:15Z",
+        "tag": "v1.4.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.4.1"
+      },
+      {
+        "version": "1.3.1",
+        "published_at": "2024-04-26T13:34:53Z",
+        "tag": "v1.3.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.3.1"
+      },
+      {
+        "version": "1.2.0",
+        "published_at": "2024-04-24T17:31:35Z",
+        "tag": "v1.2.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.2.0"
+      },
+      {
+        "version": "1.0.11",
+        "published_at": "2024-04-17T18:33:27Z",
+        "tag": "v1.0.11",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.11"
+      },
+      {
+        "version": "0.18.1",
+        "published_at": "2024-03-20T19:21:38Z",
+        "tag": "v0.18.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.18.1"
+      },
+      {
+        "version": "0.17.1",
+        "published_at": "2024-03-15T16:11:06Z",
+        "tag": "v0.17.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.17.1"
+      },
+      {
+        "version": "0.16.4",
+        "published_at": "2024-03-14T15:59:01Z",
+        "tag": "v0.16.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.16.4"
+      },
+      {
+        "version": "0.15.1",
+        "published_at": "2024-02-08T17:59:59Z",
+        "tag": "v0.15.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.15.1"
+      },
+      {
+        "version": "0.14.3",
+        "published_at": "2024-01-31T18:22:05Z",
+        "tag": "v0.14.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.14.3"
+      },
+      {
+        "version": "0.13.0",
+        "published_at": "2023-11-16T18:46:12Z",
+        "tag": "v0.13.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.13.0"
+      },
+      {
+        "version": "0.12.0",
+        "published_at": "2023-11-08T19:48:00Z",
+        "tag": "v0.12.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.12.0"
+      },
+      {
+        "version": "0.11.6",
+        "published_at": "2023-10-31T16:25:29Z",
+        "tag": "v0.11.6",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.11.6"
+      },
+      {
+        "version": "0.10.2",
+        "published_at": "2023-10-19T17:28:03Z",
+        "tag": "v0.10.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.10.2"
+      },
+      {
+        "version": "0.9.4",
+        "published_at": "2023-10-18T16:37:26Z",
+        "tag": "v0.9.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.9.4"
+      },
+      {
+        "version": "0.8.0",
+        "published_at": "2023-10-11T01:07:26Z",
+        "tag": "v0.8.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.8.0"
+      },
+      {
+        "version": "0.7.0",
+        "published_at": "2023-10-06T00:36:53Z",
+        "tag": "v0.7.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.7.0"
+      },
+      {
+        "version": "0.6.0",
+        "published_at": "2023-08-10T01:27:23Z",
+        "tag": "v0.6.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.6.0"
+      },
+      {
+        "version": "0.5.0",
+        "published_at": "2023-07-31T19:56:11Z",
+        "tag": "v0.5.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.5.0"
+      },
+      {
+        "version": "0.4.0",
+        "published_at": "2023-07-25T15:07:40Z",
+        "tag": "v0.4.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.4.0"
+      },
+      {
+        "version": "0.3.0",
+        "published_at": "2023-07-12T16:01:33Z",
+        "tag": "v0.3.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.3.0"
+      },
+      {
+        "version": "0.2.1",
+        "published_at": "2023-07-05T16:31:56Z",
+        "tag": "v0.2.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.2.1"
+      }
+    ],
+    "patchReleases": [
+      {
+        "version": "1.18.3",
+        "published_at": "2024-10-10T19:16:16Z",
+        "tag": "v1.18.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.18.3"
+      },
+      {
+        "version": "1.18.2",
+        "published_at": "2024-10-10T18:25:50Z",
+        "tag": "v1.18.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.18.2"
+      },
+      {
+        "version": "1.18.1",
+        "published_at": "2024-10-04T16:25:19Z",
+        "tag": "v1.18.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.18.1"
+      },
+      {
+        "version": "1.18.0",
+        "published_at": "2024-10-03T16:31:21Z",
+        "tag": "v1.18.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.18.0"
+      },
+      {
+        "version": "1.17.9",
+        "published_at": "2024-09-27T15:14:58Z",
+        "tag": "v1.17.9",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.9"
+      },
+      {
+        "version": "1.17.8",
+        "published_at": "2024-09-23T21:22:51Z",
+        "tag": "v1.17.8",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.8"
+      },
+      {
+        "version": "1.17.7",
+        "published_at": "2024-09-16T19:35:19Z",
+        "tag": "v1.17.7",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.7"
+      },
+      {
+        "version": "1.17.6",
+        "published_at": "2024-09-12T23:28:02Z",
+        "tag": "v1.17.6",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.6"
+      },
+      {
+        "version": "1.17.5",
+        "published_at": "2024-09-12T23:23:46Z",
+        "tag": "v1.17.5",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.5"
+      },
+      {
+        "version": "1.17.4",
+        "published_at": "2024-09-12T20:34:55Z",
+        "tag": "v1.17.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.4"
+      },
+      {
+        "version": "1.17.3",
+        "published_at": "2024-09-12T18:58:49Z",
+        "tag": "v1.17.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.3"
+      },
+      {
+        "version": "1.17.2",
+        "published_at": "2024-09-12T16:26:46Z",
+        "tag": "v1.17.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.2"
+      },
+      {
+        "version": "1.17.1",
+        "published_at": "2024-09-12T15:13:12Z",
+        "tag": "v1.17.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.1"
+      },
+      {
+        "version": "1.17.0",
+        "published_at": "2024-09-12T02:07:03Z",
+        "tag": "v1.17.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.17.0"
+      },
+      {
+        "version": "1.16.2",
+        "published_at": "2024-09-09T20:45:40Z",
+        "tag": "v1.16.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.16.2"
+      },
+      {
+        "version": "1.16.0",
+        "published_at": "2024-09-05T03:17:58Z",
+        "tag": "v1.16.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.16.0"
+      },
+      {
+        "version": "1.15.3",
+        "published_at": "2024-09-03T19:03:20Z",
+        "tag": "v1.15.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.15.3"
+      },
+      {
+        "version": "1.15.1",
+        "published_at": "2024-08-30T21:46:19Z",
+        "tag": "v1.15.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.15.1"
+      },
+      {
+        "version": "1.15.0",
+        "published_at": "2024-08-30T16:12:58Z",
+        "tag": "v1.15.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.15.0"
+      },
+      {
+        "version": "1.12.0",
+        "published_at": "2024-08-22T21:56:31Z",
+        "tag": "v1.12.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.12.0"
+      },
+      {
+        "version": "1.11.0",
+        "published_at": "2024-08-15T16:28:30Z",
+        "tag": "v1.11.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.11.0"
+      },
+      {
+        "version": "1.8.4",
+        "published_at": "2024-07-18T17:46:18Z",
+        "tag": "v1.8.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.8.4"
+      },
+      {
+        "version": "1.8.3",
+        "published_at": "2024-07-18T16:41:54Z",
+        "tag": "v1.8.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.8.3"
+      },
+      {
+        "version": "1.8.2",
+        "published_at": "2024-07-16T15:49:06Z",
+        "tag": "v1.8.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.8.2"
+      },
+      {
+        "version": "1.8.1",
+        "published_at": "2024-07-12T17:36:48Z",
+        "tag": "v1.8.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.8.1"
+      },
+      {
+        "version": "1.8.0",
+        "published_at": "2024-07-11T17:51:23Z",
+        "tag": "v1.8.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.8.0"
+      },
+      {
+        "version": "1.7.7",
+        "published_at": "2024-07-03T17:09:18Z",
+        "tag": "v1.7.7",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.7.7"
+      },
+      {
+        "version": "1.7.6",
+        "published_at": "2024-07-03T16:57:51Z",
+        "tag": "v1.7.6",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.7.6"
+      },
+      {
+        "version": "1.7.5",
+        "published_at": "2024-07-03T16:51:40Z",
+        "tag": "v1.7.5",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.7.5"
+      },
+      {
+        "version": "1.7.4",
+        "published_at": "2024-07-03T15:51:21Z",
+        "tag": "v1.7.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.7.4"
+      },
+      {
+        "version": "1.7.3",
+        "published_at": "2024-07-03T12:52:39Z",
+        "tag": "v1.7.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.7.3"
+      },
+      {
+        "version": "1.7.2",
+        "published_at": "2024-07-03T06:01:26Z",
+        "tag": "v1.7.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.7.2"
+      },
+      {
+        "version": "1.7.1",
+        "published_at": "2024-06-26T20:14:25Z",
+        "tag": "v1.7.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.7.1"
+      },
+      {
+        "version": "1.7.0",
+        "published_at": "2024-06-26T19:15:36Z",
+        "tag": "v1.7.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.7.0"
+      },
+      {
+        "version": "1.6.10",
+        "published_at": "2024-06-20T22:09:06Z",
+        "tag": "v1.6.10",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.10"
+      },
+      {
+        "version": "1.6.9",
+        "published_at": "2024-06-20T17:15:39Z",
+        "tag": "v1.6.9",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.9"
+      },
+      {
+        "version": "1.6.8",
+        "published_at": "2024-06-10T15:24:41Z",
+        "tag": "v1.6.8",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.8"
+      },
+      {
+        "version": "1.6.7",
+        "published_at": "2024-06-07T20:46:32Z",
+        "tag": "v1.6.7",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.7"
+      },
+      {
+        "version": "1.6.5",
+        "published_at": "2024-05-29T14:48:53Z",
+        "tag": "v1.6.5",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.5"
+      },
+      {
+        "version": "1.6.4",
+        "published_at": "2024-05-28T15:58:50Z",
+        "tag": "v1.6.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.4"
+      },
+      {
+        "version": "1.6.3",
+        "published_at": "2024-05-28T15:17:16Z",
+        "tag": "v1.6.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.3"
+      },
+      {
+        "version": "1.6.2",
+        "published_at": "2024-05-22T23:23:08Z",
+        "tag": "v1.6.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.2"
+      },
+      {
+        "version": "1.6.1",
+        "published_at": "2024-05-22T20:05:15Z",
+        "tag": "v1.6.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.1"
+      },
+      {
+        "version": "1.6.0",
+        "published_at": "2024-05-22T16:38:51Z",
+        "tag": "v1.6.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.6.0"
+      },
+      {
+        "version": "1.4.0",
+        "published_at": "2024-05-01T16:37:35Z",
+        "tag": "v1.4.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.4.0"
+      },
+      {
+        "version": "1.3.0",
+        "published_at": "2024-04-25T16:40:16Z",
+        "tag": "v1.3.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.3.0"
+      },
+      {
+        "version": "1.0.10",
+        "published_at": "2024-04-17T18:03:34Z",
+        "tag": "v1.0.10",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.10"
+      },
+      {
+        "version": "1.0.9",
+        "published_at": "2024-04-17T18:02:06Z",
+        "tag": "v1.0.9",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.9"
+      },
+      {
+        "version": "1.0.7",
+        "published_at": "2024-04-17T12:55:35Z",
+        "tag": "v1.0.7",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.7"
+      },
+      {
+        "version": "1.0.6",
+        "published_at": "2024-04-16T19:45:10Z",
+        "tag": "v1.0.6",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.6"
+      },
+      {
+        "version": "1.0.5",
+        "published_at": "2024-04-12T01:22:01Z",
+        "tag": "v1.0.5",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.5"
+      },
+      {
+        "version": "1.0.4",
+        "published_at": "2024-04-11T20:31:57Z",
+        "tag": "v1.0.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.4"
+      },
+      {
+        "version": "1.0.3",
+        "published_at": "2024-04-11T00:59:09Z",
+        "tag": "v1.0.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.3"
+      },
+      {
+        "version": "1.0.2",
+        "published_at": "2024-04-10T20:51:33Z",
+        "tag": "v1.0.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.2"
+      },
+      {
+        "version": "1.0.1",
+        "published_at": "2024-04-10T17:33:55Z",
+        "tag": "v1.0.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.1"
+      },
+      {
+        "version": "1.0.0",
+        "published_at": "2024-04-09T14:55:40Z",
+        "tag": "v1.0.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v1.0.0"
+      },
+      {
+        "version": "0.19.5",
+        "published_at": "2024-04-08T22:23:39Z",
+        "tag": "v0.19.5",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.19.5"
+      },
+      {
+        "version": "0.19.3",
+        "published_at": "2024-04-01T22:56:19Z",
+        "tag": "v0.19.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.19.3"
+      },
+      {
+        "version": "0.19.2",
+        "published_at": "2024-03-27T17:48:28Z",
+        "tag": "v0.19.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.19.2"
+      },
+      {
+        "version": "0.19.1",
+        "published_at": "2024-03-27T15:13:42Z",
+        "tag": "v0.19.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.19.1"
+      },
+      {
+        "version": "0.19.0",
+        "published_at": "2024-03-26T15:15:05Z",
+        "tag": "v0.19.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.19.0"
+      },
+      {
+        "version": "0.18.0",
+        "published_at": "2024-03-19T22:42:37Z",
+        "tag": "v0.18.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.18.0"
+      },
+      {
+        "version": "0.17.0",
+        "published_at": "2024-03-14T18:23:32Z",
+        "tag": "v0.17.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.17.0"
+      },
+      {
+        "version": "0.16.3",
+        "published_at": "2024-03-13T18:52:07Z",
+        "tag": "v0.16.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.16.3"
+      },
+      {
+        "version": "0.16.2",
+        "published_at": "2024-03-08T00:41:38Z",
+        "tag": "v0.16.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.16.2"
+      },
+      {
+        "version": "0.16.1",
+        "published_at": "2024-02-29T22:25:02Z",
+        "tag": "v0.16.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.16.1"
+      },
+      {
+        "version": "0.16.0",
+        "published_at": "2024-02-22T01:06:22Z",
+        "tag": "v0.16.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.16.0"
+      },
+      {
+        "version": "0.15.0",
+        "published_at": "2024-02-08T17:41:26Z",
+        "tag": "v0.15.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.15.0"
+      },
+      {
+        "version": "0.14.2",
+        "published_at": "2024-01-31T15:15:24Z",
+        "tag": "v0.14.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.14.2"
+      },
+      {
+        "version": "0.14.1",
+        "published_at": "2024-01-24T19:24:18Z",
+        "tag": "v0.14.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.14.1"
+      },
+      {
+        "version": "0.14.0",
+        "published_at": "2024-01-09T17:43:57Z",
+        "tag": "v0.14.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.14.0"
+      },
+      {
+        "version": "0.11.5",
+        "published_at": "2023-10-26T23:29:00Z",
+        "tag": "v0.11.5",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.11.5"
+      },
+      {
+        "version": "0.11.4",
+        "published_at": "2023-10-25T16:53:45Z",
+        "tag": "v0.11.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.11.4"
+      },
+      {
+        "version": "0.11.3",
+        "published_at": "2023-10-23T21:07:09Z",
+        "tag": "v0.11.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.11.3"
+      },
+      {
+        "version": "0.11.2",
+        "published_at": "2023-10-20T18:55:16Z",
+        "tag": "v0.11.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.11.2"
+      },
+      {
+        "version": "0.11.1",
+        "published_at": "2023-10-19T23:00:37Z",
+        "tag": "v0.11.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.11.1"
+      },
+      {
+        "version": "0.11.0",
+        "published_at": "2023-10-19T22:49:28Z",
+        "tag": "v0.11.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.11.0"
+      },
+      {
+        "version": "0.10.1",
+        "published_at": "2023-10-19T14:31:24Z",
+        "tag": "v0.10.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.10.1"
+      },
+      {
+        "version": "0.10.0",
+        "published_at": "2023-10-19T00:20:33Z",
+        "tag": "v0.10.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.10.0"
+      },
+      {
+        "version": "0.9.3",
+        "published_at": "2023-10-18T15:55:49Z",
+        "tag": "v0.9.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.9.3"
+      },
+      {
+        "version": "0.9.2",
+        "published_at": "2023-10-17T17:03:20Z",
+        "tag": "v0.9.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.9.2"
+      },
+      {
+        "version": "0.9.1",
+        "published_at": "2023-10-16T22:11:41Z",
+        "tag": "v0.9.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.9.1"
+      },
+      {
+        "version": "0.9.0",
+        "published_at": "2023-10-13T23:45:34Z",
+        "tag": "v0.9.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.9.0"
+      },
+      {
+        "version": "0.2.0",
+        "published_at": "2023-07-03T15:24:10Z",
+        "tag": "v0.2.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/v0.2.0"
+      }
+    ]
+  },
+  "delvtech/hyperdrive-viem": {
+    "latest": {
+      "version": "3.0.6",
+      "published_at": "2024-10-08T18:18:41Z",
+      "tag": "@delvtech/hyperdrive-viem@3.0.6",
+      "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%403.0.6"
+    },
+    "majorReleases": [
+      {
+        "version": "0.0.5",
+        "published_at": "2024-05-10T21:13:31Z",
+        "tag": "@delvtech/hyperdrive-viem@0.0.5",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%400.0.5"
+      },
+      {
+        "version": "0.0.4",
+        "published_at": "2024-04-24T20:29:28Z",
+        "tag": "@delvtech/hyperdrive-viem@0.0.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%400.0.4"
+      }
+    ],
+    "minorReleases": [
+      {
+        "version": "3.0.6",
+        "published_at": "2024-10-08T18:18:41Z",
+        "tag": "@delvtech/hyperdrive-viem@3.0.6",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%403.0.6"
+      },
+      {
+        "version": "3.0.5",
+        "published_at": "2024-09-10T15:53:03Z",
+        "tag": "@delvtech/hyperdrive-viem@3.0.5",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%403.0.5"
+      },
+      {
+        "version": "3.0.4",
+        "published_at": "2024-09-09T20:21:48Z",
+        "tag": "@delvtech/hyperdrive-viem@3.0.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%403.0.4"
+      },
+      {
+        "version": "3.0.3",
+        "published_at": "2024-09-03T19:02:44Z",
+        "tag": "@delvtech/hyperdrive-viem@3.0.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%403.0.3"
+      },
+      {
+        "version": "3.0.2",
+        "published_at": "2024-08-30T22:58:53Z",
+        "tag": "@delvtech/hyperdrive-viem@3.0.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%403.0.2"
+      },
+      {
+        "version": "3.0.0",
+        "published_at": "2024-08-26T18:59:20Z",
+        "tag": "@delvtech/hyperdrive-viem@3.0.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%403.0.0"
+      },
+      {
+        "version": "2.4.3",
+        "published_at": "2024-07-30T19:01:01Z",
+        "tag": "@delvtech/hyperdrive-viem@2.4.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%402.4.3"
+      },
+      {
+        "version": "2.3.0",
+        "published_at": "2024-06-07T04:02:11Z",
+        "tag": "@delvtech/hyperdrive-viem@2.3.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%402.3.0"
+      },
+      {
+        "version": "0.0.3",
+        "published_at": "2024-04-08T22:10:44Z",
+        "tag": "@delvtech/hyperdrive-viem@0.0.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%400.0.3"
+      }
+    ],
+    "patchReleases": [
+      {
+        "version": "3.0.1",
+        "published_at": "2024-08-30T06:14:46Z",
+        "tag": "@delvtech/hyperdrive-viem@3.0.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%403.0.1"
+      },
+      {
+        "version": "2.4.2",
+        "published_at": "2024-07-30T05:13:00Z",
+        "tag": "@delvtech/hyperdrive-viem@2.4.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%402.4.2"
+      },
+      {
+        "version": "2.4.1",
+        "published_at": "2024-07-24T15:54:03Z",
+        "tag": "@delvtech/hyperdrive-viem@2.4.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%402.4.1"
+      },
+      {
+        "version": "0.0.2",
+        "published_at": "2024-04-06T00:16:07Z",
+        "tag": "@delvtech/hyperdrive-viem@0.0.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-viem%400.0.2"
+      }
+    ]
+  },
+  "delvtech/hyperdrive-js-core": {
+    "latest": {
+      "version": "3.0.6",
+      "published_at": "2024-10-08T18:18:38Z",
+      "tag": "@delvtech/hyperdrive-js-core@3.0.6",
+      "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-js-core%403.0.6"
+    },
+    "majorReleases": [],
+    "minorReleases": [
+      {
+        "version": "2.2.1",
+        "published_at": "2024-06-04T23:34:49Z",
+        "tag": "@delvtech/hyperdrive-js-core@2.2.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-js-core%402.2.1"
+      },
+      {
+        "version": "2.2.0",
+        "published_at": "2024-05-22T20:04:54Z",
+        "tag": "@delvtech/hyperdrive-js-core@2.2.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-js-core%402.2.0"
+      },
+      {
+        "version": "2.1.0",
+        "published_at": "2024-05-22T16:24:37Z",
+        "tag": "@delvtech/hyperdrive-js-core@2.1.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-js-core%402.1.0"
+      },
+      {
+        "version": "1.0.1",
+        "published_at": "2024-05-14T17:07:32Z",
+        "tag": "@delvtech/hyperdrive-js-core@1.0.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-js-core%401.0.1"
+      }
+    ],
+    "patchReleases": [
+      {
+        "version": "2.4.2",
+        "published_at": "2024-07-30T05:12:57Z",
+        "tag": "@delvtech/hyperdrive-js-core@2.4.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-js-core%402.4.2"
+      },
+      {
+        "version": "1.0.0",
+        "published_at": "2024-05-10T21:13:28Z",
+        "tag": "@delvtech/hyperdrive-js-core@1.0.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-js-core%401.0.0"
+      }
+    ]
+  },
+  "delvtech/hyperdrive-appconfig": {
+    "latest": {
+      "version": "0.0.1",
+      "published_at": "2024-10-08T18:18:35Z",
+      "tag": "@delvtech/hyperdrive-appconfig@0.0.1",
+      "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-appconfig%400.0.1"
+    },
+    "majorReleases": [
+      {
+        "version": "0.0.1",
+        "published_at": "2024-10-08T18:18:35Z",
+        "tag": "@delvtech/hyperdrive-appconfig@0.0.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-appconfig%400.0.1"
+      }
+    ],
+    "minorReleases": [],
+    "patchReleases": []
+  },
+  "delvtech/fixed-point-wasm": {
+    "latest": {
+      "version": "0.0.6",
+      "published_at": "2024-10-08T18:18:32Z",
+      "tag": "@delvtech/fixed-point-wasm@0.0.6",
+      "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/fixed-point-wasm%400.0.6"
+    },
+    "majorReleases": [
+      {
+        "version": "0.0.5",
+        "published_at": "2024-09-10T15:52:57Z",
+        "tag": "@delvtech/fixed-point-wasm@0.0.5",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/fixed-point-wasm%400.0.5"
+      },
+      {
+        "version": "0.0.4",
+        "published_at": "2024-08-26T18:59:11Z",
+        "tag": "@delvtech/fixed-point-wasm@0.0.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/fixed-point-wasm%400.0.4"
+      },
+      {
+        "version": "0.0.2",
+        "published_at": "2024-07-24T15:53:57Z",
+        "tag": "@delvtech/fixed-point-wasm@0.0.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/fixed-point-wasm%400.0.2"
+      }
+    ],
+    "minorReleases": [
+      {
+        "version": "0.0.3",
+        "published_at": "2024-07-30T05:12:54Z",
+        "tag": "@delvtech/fixed-point-wasm@0.0.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/fixed-point-wasm%400.0.3"
+      }
+    ],
+    "patchReleases": []
+  },
+  "delvtech/hyperdrive-artifacts": {
+    "latest": {
+      "version": "1.0.18",
+      "published_at": "2024-08-30T06:14:49Z",
+      "tag": "@delvtech/hyperdrive-artifacts@1.0.18",
+      "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-artifacts%401.0.18"
+    },
+    "majorReleases": [
+      {
+        "version": "1.0.18",
+        "published_at": "2024-08-30T06:14:49Z",
+        "tag": "@delvtech/hyperdrive-artifacts@1.0.18",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-artifacts%401.0.18"
+      },
+      {
+        "version": "1.0.16",
+        "published_at": "2024-08-26T18:59:17Z",
+        "tag": "@delvtech/hyperdrive-artifacts@1.0.16",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-artifacts%401.0.16"
+      },
+      {
+        "version": "0.4.0",
+        "published_at": "2024-07-30T19:00:55Z",
+        "tag": "@delvtech/hyperdrive-artifacts@0.4.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-artifacts%400.4.0"
+      },
+      {
+        "version": "0.2.0",
+        "published_at": "2024-05-10T21:13:25Z",
+        "tag": "@delvtech/hyperdrive-artifacts@0.2.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-artifacts%400.2.0"
+      }
+    ],
+    "minorReleases": [],
+    "patchReleases": [
+      {
+        "version": "0.1.0",
+        "published_at": "2024-04-24T20:29:23Z",
+        "tag": "@delvtech/hyperdrive-artifacts@0.1.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-artifacts%400.1.0"
+      }
+    ]
+  },
+  "delvtech/hyperdrive-wasm": {
+    "latest": {
+      "version": "0.15.3",
+      "published_at": "2024-08-26T18:59:23Z",
+      "tag": "@delvtech/hyperdrive-wasm@0.15.3",
+      "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-wasm%400.15.3"
+    },
+    "majorReleases": [
+      {
+        "version": "0.15.3",
+        "published_at": "2024-08-26T18:59:23Z",
+        "tag": "@delvtech/hyperdrive-wasm@0.15.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-wasm%400.15.3"
+      },
+      {
+        "version": "0.15.2",
+        "published_at": "2024-07-30T05:13:03Z",
+        "tag": "@delvtech/hyperdrive-wasm@0.15.2",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-wasm%400.15.2"
+      },
+      {
+        "version": "0.14.4",
+        "published_at": "2024-06-07T04:02:08Z",
+        "tag": "@delvtech/hyperdrive-wasm@0.14.4",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-wasm%400.14.4"
+      },
+      {
+        "version": "0.14.3",
+        "published_at": "2024-06-04T23:34:52Z",
+        "tag": "@delvtech/hyperdrive-wasm@0.14.3",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-wasm%400.14.3"
+      },
+      {
+        "version": "0.14.1",
+        "published_at": "2024-06-03T22:05:14Z",
+        "tag": "@delvtech/hyperdrive-wasm@0.14.1",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-wasm%400.14.1"
+      },
+      {
+        "version": "0.14.0",
+        "published_at": "2024-05-20T20:17:59Z",
+        "tag": "@delvtech/hyperdrive-wasm@0.14.0",
+        "url": "https://github.com/delvtech/hyperdrive-frontend/releases/tag/%40delvtech/hyperdrive-wasm%400.14.0"
+      }
+    ],
+    "minorReleases": [],
+    "patchReleases": []
+  }
+}
