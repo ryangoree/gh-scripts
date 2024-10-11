@@ -1,12 +1,25 @@
 {
-  "name": "github",
+  "name": "github-scripts",
   "version": "1.0.0",
   "type": "module",
+  "main": "bin.js",
+  "license": "MIT",
+  "bin": {
+    "github-scripts": "bin.js"
+  },
+  "scripts": {
+    "start": "node bin.js"
+  },
   "dependencies": {
     "clide-js": "^0.2.0",
     "clide-plugin-command-menu": "^0.1.0",
     "dotenv": "^16.4.5",
     "octokit": "^4.0.2",
     "semver": "^7.6.3"
-  }
+  },
+  "author": {
+    "name": "Ryan Goree",
+    "url": "https//github.com/ryangoree"
+  },
+  "repository": "https://github.com/ryangoree/github-scripts"
 }

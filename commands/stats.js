@@ -14,7 +14,7 @@ import updateCommand from './update.js';
 const DAY_MS = 1000 * 60 * 60 * 24;
 
 export default command({
-  description: 'Print release stats for a repository',
+  description: 'Get release stats for a repository',
   isMiddleware: false,
 
   options: {
@@ -140,11 +140,15 @@ export default command({
       writeFileSync(cachedStatsPath, JSON.stringify(stats, null, 2));
     }
 
-    const releaseDates = data.releases.map((r) => new Date(r.published_at));
     console.log(`
 Projects: ${Object.entries(stats)
       .map(
         ([name, { latest, majorReleases, minorReleases, patchReleases }]) => {
+          const allReleaseDates = [
+            ...majorReleases,
+            ...minorReleases,
+            ...patchReleases,
+          ].map((r) => new Date(r.published_at));
           const majorReleaseDates = majorReleases.map(
             (r) => new Date(r.published_at)
           );
@@ -176,15 +180,15 @@ Projects: ${Object.entries(stats)
       )}
       median days between: ${(
         medianTimeBetween(patchReleaseDates) / DAY_MS
+      ).toFixed(1)}
+    total: ${data.releases.length}
+      avg days between: ${(avgTimeBetween(allReleaseDates) / DAY_MS).toFixed(1)}
+      median days between: ${(
+        medianTimeBetween(allReleaseDates) / DAY_MS
       ).toFixed(1)}`;
         }
       )
-      .join('')}
-    total: ${data.releases.length}
-      avg days between: ${(avgTimeBetween(releaseDates) / DAY_MS).toFixed(1)}
-      median days between: ${(medianTimeBetween(releaseDates) / DAY_MS).toFixed(
-        1
-      )}`);
+      .join('')}`);
 
     let outFile = await options.outFile();
     if (outFile !== undefined) {
