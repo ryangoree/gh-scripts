@@ -1,11 +1,10 @@
 {
-  "name": "github-scripts",
+  "name": "gh-scripts",
   "version": "1.0.0",
   "type": "module",
-  "main": "bin.js",
   "license": "MIT",
   "bin": {
-    "github-scripts": "bin.js"
+    "gh-scripts": "bin.js"
   },
   "scripts": {
     "start": "node bin.js"
