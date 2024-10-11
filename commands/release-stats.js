@@ -63,7 +63,9 @@ export default command({
       });
     } else if (existsSync(cachedStatsPath)) {
       stats = JSON.parse(readFileSync(cachedStatsPath, 'utf8'));
-    } else {
+    }
+
+    if (!stats) {
       const { data } = loadCache(owner, repo);
 
       if (!data) {
@@ -91,7 +93,7 @@ export default command({
           tag.scope && tag.name ? `${tag.scope}/${tag.name}` : tag.name || repo;
         const projectData = (stats[projectName] ||= {
           latest: release,
-          original: release,
+          original: undefined,
           majorReleases: [],
           minorReleases: [],
           patchReleases: [],
@@ -108,7 +110,8 @@ export default command({
           continue;
         }
 
-        const originalVersion = semver.parse(projectData.original.version);
+        const originalVersion =
+          projectData.original && semver.parse(projectData.original.version);
         if (!originalVersion || version.major < originalVersion.major) {
           projectData.original = release;
           projectData.majorReleases.push(release);
