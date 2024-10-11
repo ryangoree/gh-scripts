@@ -16,6 +16,7 @@ const DAY_MS = 1000 * 60 * 60 * 24;
 export default command({
   description: 'Get release stats for a repository',
   isMiddleware: false,
+  requiresSubcommands: false,
 
   options: {
     owner: {
@@ -124,14 +125,14 @@ export default command({
         const originalVersion =
           projectData.original && semver.parse(projectData.original.version);
         if (!originalVersion || version.major < originalVersion.major) {
+          projectData.majorReleases.push(projectData.original);
           projectData.original = release;
-          projectData.majorReleases.push(release);
         } else if (version.minor < originalVersion.minor) {
+          projectData.minorReleases.push(projectData.original);
           projectData.original = release;
-          projectData.minorReleases.push(release);
         } else if (version.patch < originalVersion.patch) {
+          projectData.patchReleases.push(projectData.original);
           projectData.original = release;
-          projectData.patchReleases.push(release);
         }
       }
 
