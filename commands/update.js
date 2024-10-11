@@ -12,14 +12,12 @@ export default command({
       description: 'The owner of the repository',
       type: 'string',
       required: true,
-      default: 'ryangoree',
     },
     repo: {
       alias: ['r'],
       description: 'The repository name',
       type: 'string',
       required: true,
-      default: 'clide-js',
     },
     pages: {
       alias: ['p', 'max-pages'],
@@ -41,8 +39,12 @@ export default command({
     },
   },
   handler: async ({ options, next }) => {
-    const owner = await options.owner();
-    const repo = await options.repo();
+    const owner = await options.owner({
+      prompt: 'Enter repository owner/organization',
+    });
+    const repo = await options.repo({
+      prompt: 'Enter repository name',
+    });
     const { pages, token } = await options.get(['pages', 'token']);
 
     // Cache
@@ -107,8 +109,12 @@ export default command({
         break;
       }
 
-      // Wait a second before fetching the next page
-      setTimeout(() => {}, 1000);
+      if (page === pages) {
+        console.log(`Reached max pages: ${pages}`);
+      } else {
+        // Wait a second before fetching the next page
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
     }
 
     if (cachedData) {
@@ -126,8 +132,8 @@ export default command({
 
     console.log(`Cache updated:
   Path: ${cachePath}
-  lastUpdated: ${cachedData?.lastUpdated || 'n/a'} -> ${newData.lastUpdated}
-  releaseCount: ${cachedData?.releaseCount || 0} -> ${newData.releaseCount}
+  Last updated: ${cachedData?.lastUpdated || 'n/a'} -> ${newData.lastUpdated}
+  Release count: ${cachedData?.releaseCount || 0} -> ${newData.releaseCount}
   New releases: ${releases.length - (cachedData?.releaseCount || 0)}`);
 
     next(newData);

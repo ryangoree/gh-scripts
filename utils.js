@@ -3,12 +3,16 @@ import { dirname, resolve } from 'node:path';
 
 const basePath = dirname(new URL(import.meta.url).pathname);
 
-export function getCachePath(owner, repo) {
-  return resolve(basePath, `./.cache/${owner}--${repo}.json`);
+export function getCachePath(owner, repo, subDir) {
+  const dirPathParts = [basePath, './.cache/'];
+  if (subDir) {
+    dirPathParts.push(subDir);
+  }
+  return resolve(...dirPathParts, `${owner}--${repo}.json`);
 }
 
-export function loadCache(owner, repo) {
-  const cachePath = getCachePath(owner, repo);
+export function loadCache(owner, repo, subDir) {
+  const cachePath = getCachePath(owner, repo, subDir);
   return {
     cachePath,
     data: existsSync(cachePath)
@@ -62,8 +66,19 @@ export function avgTimeBetween(timestamps) {
 
 export function medianTimeBetween(timestamps) {
   if (timestamps.length <= 1) return 0;
-  const leftIndex = Math.floor(timestamps.length / 2);
-  const left = timestamps[leftIndex];
-  const right = timestamps[leftIndex + 1];
-  return left - right;
+  const diffs = [];
+
+  for (const [i, timestamp] of timestamps.entries()) {
+    if (i === 0) continue;
+    diffs.push(timestamps[i - 1] - timestamp);
+  }
+
+  diffs.sort((a, b) => a - b);
+
+  if (diffs.length % 2) {
+    const midIndex = Math.floor(diffs.length / 2);
+    return avgTimeBetween(diffs.slice(midIndex - 1, midIndex + 1));
+  }
+
+  return diffs[diffs.length / 2];
 }

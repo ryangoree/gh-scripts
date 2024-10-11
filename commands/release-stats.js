@@ -1,6 +1,6 @@
 import { command } from 'clide-js';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { basename, dirname, resolve } from 'node:path';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { dirname } from 'node:path';
 import semver from 'semver';
 import {
   avgTimeBetween,
@@ -21,14 +21,12 @@ export default command({
       description: 'The owner of the repository',
       type: 'string',
       required: true,
-      default: 'ryangoree',
     },
     repo: {
       alias: ['r'],
       description: 'The repository name',
       type: 'string',
       required: true,
-      default: 'clide-js',
     },
     update: {
       alias: ['u'],
@@ -42,18 +40,16 @@ export default command({
       type: 'string',
     },
   },
-  handler: async ({ options, fork, next, end }) => {
-    const owner = await options.owner();
-    const repo = await options.repo();
+  handler: async ({ client, options, fork, next, end }) => {
+    const owner = await options.owner({
+      prompt: 'Enter repository owner/organization',
+    });
+    const repo = await options.repo({
+      prompt: 'Enter repository name',
+    });
     const update = await options.update();
-    const cachePath = getCachePath(owner, repo);
-    const cacheName = basename(cachePath);
-    const cachedStatsPath = resolve(
-      dirname(cachePath),
-      './release-stats/',
-      `${cacheName}`
-    );
 
+    const cachedStatsPath = getCachePath(owner, repo, 'release-stats');
     let stats;
 
     if (update) {
@@ -61,18 +57,31 @@ export default command({
         commands: [updateCommand],
         optionValues: { owner, repo },
       });
-    } else if (existsSync(cachedStatsPath)) {
-      stats = JSON.parse(readFileSync(cachedStatsPath, 'utf8'));
+    } else {
+      const { data } = loadCache(owner, repo, 'release-stats');
+      stats = data;
     }
 
     if (!stats) {
-      const { data } = loadCache(owner, repo);
+      let { data } = loadCache(owner, repo);
 
       if (!data) {
-        console.error(
+        client.error(
           `No cache found for ${owner}/${repo}. Run with --update / -u to fetch the latest data.`
         );
-        return end();
+        const update = await client.prompt({
+          message: 'Would you like to update the cache now?',
+          type: 'toggle',
+          default: false,
+        });
+        if (update) {
+          data = await fork({
+            commands: [updateCommand],
+            optionValues: { owner, repo },
+          });
+        } else {
+          return end();
+        }
       }
 
       const { lastUpdated, releaseCount, releases } = data;
