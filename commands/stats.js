@@ -52,7 +52,7 @@ export default command({
     });
     const update = await options.update();
 
-    const cachedStatsPath = getCachePath(owner, repo, 'release-stats');
+    const cachedStatsPath = getCachePath(owner, repo, 'stats');
     let stats;
 
     if (update) {
@@ -61,7 +61,7 @@ export default command({
         optionValues: { owner, repo },
       });
     } else {
-      const { data } = loadCache(owner, repo, 'release-stats');
+      const { data } = loadCache(owner, repo, 'stats');
       stats = data;
     }
 

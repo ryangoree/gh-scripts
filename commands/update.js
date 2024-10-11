@@ -47,7 +47,6 @@ export default command({
     const repo = await options.repo({
       prompt: 'Enter repository name',
     });
-    const { pages, token } = await options.get(['pages', 'token']);
 
     // Cache
     const { cachePath, data: cachedData } = loadCache(owner, repo);
@@ -55,7 +54,11 @@ export default command({
       cachedData?.releases[0].published_at || 0
     );
 
-    const pageSize = options.values.pageSize ?? cachedData ? 30 : 100;
+    let {
+      pages,
+      pageSize = cachedData ? 30 : 100,
+      token,
+    } = await options.get(['pages', 'page-size', 'token']);
 
     // GitHub Client
     const octokit = new Octokit({ auth: token });
