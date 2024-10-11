@@ -6,6 +6,7 @@ import { loadCache } from '../utils.js';
 
 export default command({
   description: 'Update the cache for a repository',
+
   options: {
     owner: {
       alias: ['o'],
@@ -38,6 +39,7 @@ export default command({
       default: process.env.GITHUB_TOKEN,
     },
   },
+
   handler: async ({ options, next }) => {
     const owner = await options.owner({
       prompt: 'Enter repository owner/organization',
@@ -65,7 +67,7 @@ export default command({
 
     const releases = [];
     for (let page = 1; page <= pages; page++) {
-      console.log(`Fetching page ${page}...`);
+      console.log(`  Fetching page ${page}...`);
 
       // Fetch a page of releases
       let { data: fetchedReleases } = await octokit.rest.repos
@@ -76,7 +78,7 @@ export default command({
           page,
         })
         .catch((err) => {
-          console.error('Error fetching releases:', err);
+          console.error('  Error fetching releases:', err);
           process.exit(1);
         });
 
@@ -89,7 +91,7 @@ export default command({
 
       // No releases
       if (!fetchedReleases.length) {
-        console.log('No new releases found...');
+        console.log('  No new releases found...');
         break;
       }
 
@@ -105,12 +107,12 @@ export default command({
       releases.push(...fetchedReleases);
 
       if (fetchedReleases.length < pageSize) {
-        console.log('No more releases to fetch...');
+        console.log('  No more releases to fetch...');
         break;
       }
 
       if (page === pages) {
-        console.log(`Reached max pages: ${pages}`);
+        console.log(`  Reached max pages: ${pages}`);
       } else {
         // Wait a second before fetching the next page
         await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -121,7 +123,7 @@ export default command({
       releases.push(...cachedData.releases);
     }
 
-    console.log('Writing cache...');
+    console.log('  Writing cache...');
 
     const newData = {
       lastUpdated: new Date().toISOString(),
@@ -130,11 +132,13 @@ export default command({
     };
     writeFileSync(cachePath, JSON.stringify(newData, null, 2));
 
-    console.log(`Cache updated:
+    console.log(`
+Cache updated:
   Path: ${cachePath}
   Last updated: ${cachedData?.lastUpdated || 'n/a'} -> ${newData.lastUpdated}
   Release count: ${cachedData?.releaseCount || 0} -> ${newData.releaseCount}
-  New releases: ${releases.length - (cachedData?.releaseCount || 0)}`);
+  New releases: ${releases.length - (cachedData?.releaseCount || 0)}
+`);
 
     next(newData);
   },

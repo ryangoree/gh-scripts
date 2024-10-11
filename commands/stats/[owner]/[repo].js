@@ -8,26 +8,15 @@ import {
   loadCache,
   medianTimeBetween,
   parseTag,
-} from '../utils.js';
-import updateCommand from './update.js';
+} from '../../../utils.js';
+import updateCommand from '../../update.js';
 
 const DAY_MS = 1000 * 60 * 60 * 24;
 
 export default command({
   description: 'Print release stats for a repository',
+
   options: {
-    owner: {
-      alias: ['o'],
-      description: 'The owner of the repository',
-      type: 'string',
-      required: true,
-    },
-    repo: {
-      alias: ['r'],
-      description: 'The repository name',
-      type: 'string',
-      required: true,
-    },
     update: {
       alias: ['u'],
       description: 'Update the cache before running',
@@ -40,13 +29,9 @@ export default command({
       type: 'string',
     },
   },
-  handler: async ({ client, options, fork, next, end }) => {
-    const owner = await options.owner({
-      prompt: 'Enter repository owner/organization',
-    });
-    const repo = await options.repo({
-      prompt: 'Enter repository name',
-    });
+
+  handler: async ({ client, options, params, fork, next, end }) => {
+    const { owner, repo } = params;
     const update = await options.update();
 
     const cachedStatsPath = getCachePath(owner, repo, 'release-stats');
@@ -62,35 +47,34 @@ export default command({
       stats = data;
     }
 
-    if (!stats) {
-      let { data } = loadCache(owner, repo);
-
-      if (!data) {
-        client.error(
-          `No cache found for ${owner}/${repo}. Run with --update / -u to fetch the latest data.`
-        );
-        const update = await client.prompt({
-          message: 'Would you like to update the cache now?',
-          type: 'toggle',
-          default: false,
+    let { data } = loadCache(owner, repo);
+    if (!data) {
+      client.error(
+        `No cache found for ${owner}/${repo}. Run with --update / -u to fetch the latest data.`
+      );
+      const update = await client.prompt({
+        message: 'Would you like to update the cache now?',
+        type: 'toggle',
+        default: false,
+      });
+      if (update) {
+        data = await fork({
+          commands: [updateCommand],
+          optionValues: { owner, repo },
         });
-        if (update) {
-          data = await fork({
-            commands: [updateCommand],
-            optionValues: { owner, repo },
-          });
-        } else {
-          return end();
-        }
+      } else {
+        return end();
       }
+    }
 
+    if (!stats) {
+      stats = {};
       const { lastUpdated, releaseCount, releases } = data;
 
       console.log(`Counting release stats for ${owner}/${repo}
   Last updated: ${lastUpdated}
   Total releases: ${releaseCount}`);
 
-      stats = {};
       for (const release of releases) {
         const tag = parseTag(release.tag);
         if (!tag) {
@@ -138,57 +122,61 @@ export default command({
       writeFileSync(cachedStatsPath, JSON.stringify(stats, null, 2));
     }
 
+    const releaseDates = data.releases.map((r) => new Date(r.published_at));
     console.log(`
-  Projects: ${Object.entries(stats)
-    .map(([name, { latest, majorReleases, minorReleases, patchReleases }]) => {
-      const majorReleaseDates = majorReleases.map(
-        (r) => new Date(r.published_at)
-      );
-      const minorReleaseDates = minorReleases.map(
-        (r) => new Date(r.published_at)
-      );
-      const patchReleaseDates = patchReleases.map(
-        (r) => new Date(r.published_at)
-      );
-      return `
-    ${name}: (${latest.version})
-      major: ${majorReleases.length}
-        avg days between: ${(
-          avgTimeBetween(majorReleaseDates) / DAY_MS
-        ).toFixed(1)}
-        median days between: ${(
-          medianTimeBetween(majorReleaseDates) / DAY_MS
-        ).toFixed(1)}
-      minor: ${minorReleases.length}
-        avg days between: ${(
-          avgTimeBetween(minorReleaseDates) / DAY_MS
-        ).toFixed(1)}
-        median days between: ${(
-          medianTimeBetween(minorReleaseDates) / DAY_MS
-        ).toFixed(1)}
-      patch: ${patchReleases.length}
-        avg days between: ${(
-          avgTimeBetween(patchReleaseDates) / DAY_MS
-        ).toFixed(1)}
-        median days between: ${(
-          medianTimeBetween(patchReleaseDates) / DAY_MS
-        ).toFixed(1)}`;
-    })
-    .join('')}`);
+Projects: ${Object.entries(stats)
+      .map(
+        ([name, { latest, majorReleases, minorReleases, patchReleases }]) => {
+          const majorReleaseDates = majorReleases.map(
+            (r) => new Date(r.published_at)
+          );
+          const minorReleaseDates = minorReleases.map(
+            (r) => new Date(r.published_at)
+          );
+          const patchReleaseDates = patchReleases.map(
+            (r) => new Date(r.published_at)
+          );
+          return `
+  ${name}: (${latest.version})
+    major: ${majorReleases.length}
+      avg days between: ${(avgTimeBetween(majorReleaseDates) / DAY_MS).toFixed(
+        1
+      )}
+      median days between: ${(
+        medianTimeBetween(majorReleaseDates) / DAY_MS
+      ).toFixed(1)}
+    minor: ${minorReleases.length}
+      avg days between: ${(avgTimeBetween(minorReleaseDates) / DAY_MS).toFixed(
+        1
+      )}
+      median days between: ${(
+        medianTimeBetween(minorReleaseDates) / DAY_MS
+      ).toFixed(1)}
+    patch: ${patchReleases.length}
+      avg days between: ${(avgTimeBetween(patchReleaseDates) / DAY_MS).toFixed(
+        1
+      )}
+      median days between: ${(
+        medianTimeBetween(patchReleaseDates) / DAY_MS
+      ).toFixed(1)}`;
+        }
+      )
+      .join('')}
+    total: ${data.releases.length}
+      avg days between: ${(avgTimeBetween(releaseDates) / DAY_MS).toFixed(1)}
+      median days between: ${(medianTimeBetween(releaseDates) / DAY_MS).toFixed(
+        1
+      )}`);
 
     let outFile = await options.outFile();
     if (outFile !== undefined) {
-      // Flag provided with no value, interpret as `true`
-      if (!outFile) {
-        outFile = `${repo}.json`;
-        // const basePath = dirname(new URL(import.meta.url).pathname);
-        // outFile = relative(basePath, './stats/', cachePath);
-      }
+      outFile ||= `./out/${repo}.json`;
       console.log(`
   Writing stats to ${outFile}`);
       mkdirSync(dirname(outFile), { recursive: true });
       writeFileSync(outFile, JSON.stringify(stats, null, 2));
-      console.log(`  Stats written to ${outFile}`);
+      console.log(`  Stats written to ${outFile}
+`);
     }
 
     next(stats);

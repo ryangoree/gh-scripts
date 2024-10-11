@@ -61,7 +61,11 @@ export function parseTag(tag) {
 
 export function avgTimeBetween(timestamps) {
   if (timestamps.length <= 1) return 0;
-  return (timestamps[0] - timestamps.at(-1)) / (timestamps.length - 1);
+  const time = (timestamps[0] - timestamps.at(-1)) / (timestamps.length - 1);
+  if (time < 0) {
+    console.error('Invalid time:', timestamps);
+  }
+  return time;
 }
 
 export function medianTimeBetween(timestamps) {
@@ -77,7 +81,7 @@ export function medianTimeBetween(timestamps) {
 
   if (diffs.length % 2) {
     const midIndex = Math.floor(diffs.length / 2);
-    return avgTimeBetween(diffs.slice(midIndex - 1, midIndex + 1));
+    return diffs.slice(midIndex - 1, midIndex + 1).reduce((a, b) => a + b) / 2;
   }
 
   return diffs[diffs.length / 2];
