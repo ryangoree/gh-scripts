@@ -1,5 +1,5 @@
-import { existsSync, readFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
 
 const basePath = dirname(new URL(import.meta.url).pathname);
 
@@ -85,4 +85,24 @@ export function medianTimeBetween(timestamps) {
   }
 
   return diffs[diffs.length / 2];
+}
+
+export function recursiveRead(entryPath, { onDir, onFile, onError }) {
+  try {
+    const stat = statSync(entryPath);
+    if (stat.isDirectory()) {
+      if (onDir) onDir(entryPath);
+      const childNames = readdirSync(entryPath);
+      for (const childName of childNames) {
+        const childPath = join(entryPath, childName);
+        recursiveRead(childPath, { onDir, onFile, onError });
+      }
+    } else if (stat.isFile() && onFile) {
+      const fileContent = readFileSync(entryPath, 'utf8');
+      onFile(fileContent, entryPath);
+    }
+  } catch (err) {
+    if (onError) onError(err);
+    else throw err;
+  }
 }

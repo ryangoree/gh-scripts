@@ -1,5 +1,5 @@
 import { command } from 'clide-js';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import semver from 'semver';
 import {
@@ -29,14 +29,20 @@ export default command({
       type: 'string',
       required: true,
     },
+    calc: {
+      alias: ['re-calculate', 'c'],
+      description: 'Recalculate the stats from cache',
+      type: 'boolean',
+      default: false,
+    },
     update: {
       alias: ['u'],
       description: 'Update the cache before running',
       type: 'boolean',
       default: false,
     },
-    'out-file': {
-      alias: ['out', 'f'],
+    out: {
+      alias: ['out-file', 'f'],
       description: 'The file to write the output to',
       type: 'string',
     },
@@ -49,16 +55,17 @@ export default command({
     const repo = await options.repo({
       prompt: 'Enter repository name',
     });
-    const update = await options.update();
 
     const cachedStatsPath = getCachePath(owner, repo, 'stats');
     let stats;
 
-    if (update) {
+    if (await options.update()) {
       await fork({
         commands: [updateCommand],
         optionValues: { owner, repo },
       });
+    } else if ((await options.reCalculate()) && existsSync(cachedStatsPath)) {
+      rmSync(cachedStatsPath);
     } else {
       const { data } = loadCache(owner, repo, 'stats');
       stats = data;
@@ -70,7 +77,7 @@ export default command({
         `No cache found for ${owner}/${repo}. Run with --update / -u to fetch the latest data.`
       );
       const update = await client.prompt({
-        message: 'Would you like to update the cache now?',
+        message: 'Would you like to refresh the cache now?',
         type: 'toggle',
         default: false,
       });
@@ -87,49 +94,61 @@ export default command({
     if (!stats) {
       stats = {};
       const { lastUpdated, releaseCount, releases } = data;
+      const majorVersions = new Map();
+      const minorVersions = new Map();
 
       console.log(`Counting release stats for ${owner}/${repo}
   Last updated: ${lastUpdated}
   Total releases: ${releaseCount}`);
 
-      for (const release of releases) {
+      for (const release of releases.reverse()) {
+        const version = semver.parse(release.version);
+        if (!version) {
+          console.error('\n  Invalid version:', release, '\n');
+          continue;
+        }
+        if (version.prerelease.length) {
+          continue;
+        }
+
+        const saveData = {
+          version: release.version,
+          published_at: release.published_at,
+          tag: release.tag,
+          url: release.url,
+        };
+
         const tag = parseTag(release.tag);
         if (!tag) {
           console.error('\n  Invalid tag:', release, '\n');
           continue;
         }
-
         const projectName =
           tag.scope && tag.name ? `${tag.scope}/${tag.name}` : tag.name || repo;
         const projectData = (stats[projectName] ??= {
-          latest: release,
-          original: release,
+          latest: saveData,
+          original: saveData,
           majorReleases: [],
           minorReleases: [],
           patchReleases: [],
         });
 
-        const version = semver.parse(release.version);
-
-        if (!version) {
-          console.error('\n  Invalid version:', release, '\n');
-          continue;
+        if (version.major && !majorVersions.has(version.major)) {
+          majorVersions.set(version.major, version);
+          projectData.majorReleases.unshift(saveData);
+        } else if (
+          version.minor &&
+          !minorVersions.has(`${version.major}.${version.minor}`)
+        ) {
+          minorVersions.set(`${version.major}.${version.minor}`, version);
+          projectData.minorReleases.unshift(saveData);
+        } else {
+          projectData.patchReleases.unshift(saveData);
         }
 
-        if (version.prerelease.length) {
-          continue;
-        }
-
-        const originalVersion = semver.parse(projectData.original.version);
-        if (version.major < originalVersion.major) {
-          projectData.majorReleases.push(projectData.original);
-          projectData.original = release;
-        } else if (version.minor < originalVersion.minor) {
-          projectData.minorReleases.push(projectData.original);
-          projectData.original = release;
-        } else if (version.patch < originalVersion.patch) {
-          projectData.patchReleases.push(projectData.original);
-          projectData.original = release;
+        const latestVersion = semver.parse(projectData.latest.version);
+        if (semver.gt(version, latestVersion)) {
+          projectData.latest = saveData;
         }
       }
 

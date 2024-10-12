@@ -99,12 +99,14 @@ export default command({
       }
 
       // Prep releases
-      fetchedReleases = fetchedReleases.map((r) => ({
-        version: semver.clean(r.tag_name.replace(/(^.+@)?v?/, '')),
-        published_at: r.published_at,
-        tag: r.tag_name,
-        url: r.html_url,
-      }));
+      fetchedReleases = fetchedReleases.map(
+        ({ published_at, tag_name, html_url }) => ({
+          version: semver.clean(tag_name.replace(/(^.+@)?v?/, '')),
+          published_at,
+          tag: tag_name,
+          url: html_url,
+        })
+      );
 
       // Update data
       releases.push(...fetchedReleases);
