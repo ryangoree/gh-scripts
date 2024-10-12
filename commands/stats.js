@@ -157,10 +157,6 @@ export default command({
       writeFileSync(cachedStatsPath, JSON.stringify(stats, null, 2));
     }
 
-    function getReleaseData(release) {
-      return new Date(release.published_at);
-    }
-
     console.log(`
 Projects: ${Object.entries(stats)
       .map(
@@ -169,38 +165,39 @@ Projects: ${Object.entries(stats)
             ...majorReleases,
             ...minorReleases,
             ...patchReleases,
-          ].map(getReleaseData);
-          const majorReleaseDates = majorReleases.map(getReleaseData);
-          const minorReleaseDates = minorReleases.map(getReleaseData);
-          const patchReleaseDates = patchReleases.map(getReleaseData);
+          ].map((r) => new Date(r.published_at));
+          const majorReleaseDates = majorReleases.map(
+            (r) => new Date(r.published_at)
+          );
+          const minorReleaseDates = minorReleases.map(
+            (r) => new Date(r.published_at)
+          );
+          const patchReleaseDates = patchReleases.map(
+            (r) => new Date(r.published_at)
+          );
           return `
-  ${name}: (${latest.version})
-    major: ${majorReleases.length}
-      avg days between: ${(avgTimeBetween(majorReleaseDates) / DAY_MS).toFixed(
-        1
-      )}
-      median days between: ${(
-        medianTimeBetween(majorReleaseDates) / DAY_MS
-      ).toFixed(1)}
-    minor: ${minorReleases.length}
-      avg days between: ${(avgTimeBetween(minorReleaseDates) / DAY_MS).toFixed(
-        1
-      )}
-      median days between: ${(
-        medianTimeBetween(minorReleaseDates) / DAY_MS
-      ).toFixed(1)}
-    patch: ${patchReleases.length}
-      avg days between: ${(avgTimeBetween(patchReleaseDates) / DAY_MS).toFixed(
-        1
-      )}
-      median days between: ${(
-        medianTimeBetween(patchReleaseDates) / DAY_MS
-      ).toFixed(1)}
-    total: ${data.releases.length}
-      avg days between: ${(avgTimeBetween(allReleaseDates) / DAY_MS).toFixed(1)}
-      median days between: ${(
-        medianTimeBetween(allReleaseDates) / DAY_MS
-      ).toFixed(1)}`;
+
+${name}: (${latest.version})
+  major: ${majorReleases.length}
+    avg days between: ${(avgTimeBetween(majorReleaseDates) / DAY_MS).toFixed(1)}
+    median days between: ${(
+      medianTimeBetween(majorReleaseDates) / DAY_MS
+    ).toFixed(1)}
+  minor: ${minorReleases.length}
+    avg days between: ${(avgTimeBetween(minorReleaseDates) / DAY_MS).toFixed(1)}
+    median days between: ${(
+      medianTimeBetween(minorReleaseDates) / DAY_MS
+    ).toFixed(1)}
+  patch: ${patchReleases.length}
+    avg days between: ${(avgTimeBetween(patchReleaseDates) / DAY_MS).toFixed(1)}
+    median days between: ${(
+      medianTimeBetween(patchReleaseDates) / DAY_MS
+    ).toFixed(1)}
+  total: ${data.releases.length}
+    avg days between: ${(avgTimeBetween(allReleaseDates) / DAY_MS).toFixed(1)}
+    median days between: ${(
+      medianTimeBetween(allReleaseDates) / DAY_MS
+    ).toFixed(1)}`;
         }
       )
       .join('')}`);
