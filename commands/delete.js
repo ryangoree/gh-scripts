@@ -29,12 +29,15 @@ export default command({
       prompt: 'Enter repository name',
     });
 
+    let didDelete = false;
+
     // Delete the cache
     const path = getCachePath(owner, repo);
     const doesExist = existsSync(path);
     if (doesExist) {
-      console.log(`Deleting cache at ${path}`);
+      console.log(`Deleting cache at ${path}...`);
       rmSync(path);
+      didDelete = true;
     }
 
     // Delete any keyed cache
@@ -43,13 +46,15 @@ export default command({
       onDir: (dirPath) => {
         const path = resolve(dirPath, filename);
         if (existsSync(path)) {
-          console.log(`  Deleting keyed cache at ${path}`);
+          console.log(`Deleting keyed cache at ${path}...`);
           rmSync(path);
+          didDelete = true;
         }
       },
     });
 
-    console.log('  Cache deleted\n');
+    if (didDelete) console.log('All cache deleted\n');
+    else console.log('No cache found\n');
 
     next(doesExist);
   },

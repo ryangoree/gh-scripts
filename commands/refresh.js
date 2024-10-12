@@ -6,18 +6,8 @@ export default command({
   description: 'Refresh the cache for a repository by deleting and updating it',
 
   options: {
-    owner: {
-      alias: ['o'],
-      description: 'The owner of the repository',
-      type: 'string',
-      required: true,
-    },
-    repo: {
-      alias: ['r'],
-      description: 'The repository name',
-      type: 'string',
-      required: true,
-    },
+    ...deleteCommand.options,
+    ...updateCommand.options,
   },
 
   handler: async ({ options, fork, next }) => {
