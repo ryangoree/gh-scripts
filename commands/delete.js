@@ -1,61 +1,82 @@
 import { command } from 'clide-js';
-import { existsSync, rmSync } from 'node:fs';
-import { basename, dirname, resolve } from 'node:path';
-import { getCachePath, recursiveRead } from '../utils.js';
+import { Op } from 'sequelize';
+import { Project, Release, Repo, sql } from '../data/sql.js';
 
 export default command({
-  description: 'Delete all cached data for a repository',
+  description: 'Delete all data for a repository',
 
   options: {
-    owner: {
-      alias: ['o'],
+    o: {
+      alias: ['owner'],
       description: 'The owner of the repository',
       type: 'string',
       required: true,
     },
-    repo: {
-      alias: ['r'],
+    n: {
+      alias: ['name', 'r', 'repo'],
       description: 'The repository name',
       type: 'string',
       required: true,
     },
   },
 
-  handler: async ({ options, next }) => {
+  handler: async ({ options }) => {
     const owner = await options.owner({
-      prompt: 'Enter repository owner/organization',
-    });
-    const repo = await options.repo({
-      prompt: 'Enter repository name',
-    });
-
-    let didDelete = false;
-
-    // Delete the cache
-    const path = getCachePath(owner, repo);
-    const doesExist = existsSync(path);
-    if (doesExist) {
-      console.log(`Deleting cache at ${path}...`);
-      rmSync(path);
-      didDelete = true;
-    }
-
-    // Delete any keyed cache
-    const filename = basename(path);
-    recursiveRead(dirname(path), {
-      onDir: (dirPath) => {
-        const path = resolve(dirPath, filename);
-        if (existsSync(path)) {
-          console.log(`Deleting keyed cache at ${path}...`);
-          rmSync(path);
-          didDelete = true;
-        }
+      prompt: {
+        message: 'Choose a repository owner',
+        type: 'select',
+        choices: async () => {
+          const repos = await Repo.findAll({
+            attributes: ['owner'],
+            group: ['owner'],
+          });
+          return repos.map((r) => ({
+            title: r.owner,
+            value: r.owner,
+          }));
+        },
       },
     });
 
-    if (didDelete) console.log('All cache deleted\n');
-    else console.log('No cache found\n');
+    const name = await options.name({
+      prompt: {
+        message: 'Choose a repository to delete',
+        type: 'select',
+        choices: async () => {
+          const repos = await Repo.findAll({
+            attributes: ['name'],
+            where: { owner },
+          });
+          return repos.map((r) => ({
+            title: r.name,
+            value: r.name,
+          }));
+        },
+      },
+    });
 
-    next(doesExist);
+    const repo = await Repo.findOne({ where: { owner, name } });
+    const fullName = `${owner}/${name}`;
+
+    if (!repo) {
+      console.error(`No cached data found for ${fullName}`);
+      return;
+    }
+
+    console.log(`Deleting cached data for ${fullName}...`);
+
+    await Release.destroy({
+      where: {
+        projectId: {
+          [Op.in]: sql.literal(
+            `(SELECT id FROM projects WHERE repoId = ${repo.id})`
+          ),
+        },
+      },
+    });
+    await Project.destroy({ where: { repoId: repo.id } });
+    await repo.destroy();
+
+    console.log('  Cached data deleted\n');
   },
 });

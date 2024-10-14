@@ -1,25 +1,5 @@
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
-
-const basePath = dirname(new URL(import.meta.url).pathname);
-
-export function getCachePath(owner, repo, subDir) {
-  const dirPathParts = [basePath, './.cache/'];
-  if (subDir) {
-    dirPathParts.push(subDir);
-  }
-  return resolve(...dirPathParts, `${owner}--${repo}.json`);
-}
-
-export function loadCache(owner, repo, subDir) {
-  const cachePath = getCachePath(owner, repo, subDir);
-  return {
-    cachePath,
-    data: existsSync(cachePath)
-      ? JSON.parse(readFileSync(cachePath, 'utf8'))
-      : undefined,
-  };
-}
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
 
 export function parseTag(tag) {
   const match = tag.match(
@@ -51,6 +31,7 @@ export function parseTag(tag) {
   return {
     scope,
     name,
+    project: scope ? `${scope}/${name}` : name,
     major: +major,
     minor: +minor,
     patch: +patch,
