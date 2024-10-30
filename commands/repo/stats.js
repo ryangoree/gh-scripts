@@ -9,15 +9,15 @@ export default command({
   description: 'Get release stats for a repository',
 
   options: {
-    owner: {
-      alias: ['o'],
-      description: 'The owner of the repository',
+    o: {
+      alias: ['owner'],
+      description: 'The owner or organization of the repository',
       type: 'string',
       required: true,
     },
-    repo: {
-      alias: ['r'],
-      description: 'The repository name',
+    n: {
+      alias: ['name', 'r', 'repo'],
+      description: 'The name of the repository',
       type: 'string',
       required: true,
     },
@@ -32,8 +32,8 @@ export default command({
   handler: async ({ client, data, options, fork }) => {
     const { owner, name } = data;
     const fullName = `${owner}/${name}`;
-    const update = await options.update();
 
+    const update = await options.update();
     if (update) await fork({ commands: [updateCmd] });
 
     // Handle missing data
@@ -161,6 +161,7 @@ export default command({
       ],
       order: [['date', 'DESC']],
     });
+    if (releasesByDate.length === 0) return;
     const latestRelease = releasesByDate[0];
     const daysSinceLatest = Math.floor(
       (Date.now() - latestRelease.date.getTime()) / DAY_MS

@@ -8,6 +8,19 @@ export default command({
   description: 'Update the data for a repository by fetching new releases',
 
   options: {
+    o: {
+      alias: ['owner'],
+      description:
+        'The owner or organization of the repository to fetch data for',
+      type: 'string',
+      required: true,
+    },
+    n: {
+      alias: ['name', 'r', 'repo'],
+      description: 'The name of the repository to fetch data for',
+      type: 'string',
+      required: true,
+    },
     t: {
       alias: ['token', 'github-token'],
       description: 'The GitHub token to use for authentication',
@@ -30,7 +43,6 @@ export default command({
 
   handler: async ({ data, options }) => {
     const { owner, name } = data;
-    const fullName = `${owner}/${name}`;
     const [repo, isNew] = await Repo.findOrCreate({
       where: { owner, name },
       include: {
@@ -42,11 +54,13 @@ export default command({
         },
       },
     });
+    const fullName = `${owner}/${name}`;
     const lastUpdated = !isNew ? new Date(repo.updatedAt) : null;
     const existingProjectCount = repo.projects?.length || 0;
     const existingReleaseCount =
       repo.projects?.flatMap((p) => p.releases).length || 0;
 
+    // Prep GitHub client
     const token = await options.token();
     const gh = new Octokit({ auth: token });
     const maxPages = await options.maxPages();

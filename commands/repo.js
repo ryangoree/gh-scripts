@@ -1,4 +1,5 @@
 import { command } from 'clide-js';
+import { Repo } from '../data/sql.js';
 
 export default command({
   description: 'Commands for managing repositories',
@@ -21,10 +22,37 @@ export default command({
 
   handler: async ({ options, next }) => {
     const owner = await options.owner({
-      prompt: 'Enter repository owner/organization',
+      prompt: {
+        message: 'Enter repository owner/organization',
+        type: 'autocomplete',
+        choices: async () => {
+          const repos = await Repo.findAll({
+            attributes: ['owner'],
+            group: ['owner'],
+          });
+          return repos.map((r) => ({
+            title: r.owner,
+            value: r.owner,
+          }));
+        },
+      },
     });
+
     const name = await options.name({
-      prompt: 'Enter repository name',
+      prompt: {
+        message: 'Enter repository name',
+        type: 'autocomplete',
+        choices: async () => {
+          const repos = await Repo.findAll({
+            attributes: ['name'],
+            where: { owner },
+          });
+          return repos.map((r) => ({
+            title: r.name,
+            value: r.name,
+          }));
+        },
+      },
     });
 
     next({ owner, name });

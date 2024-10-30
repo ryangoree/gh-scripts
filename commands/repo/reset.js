@@ -1,5 +1,5 @@
 import { command } from 'clide-js';
-import deleteCmd from '../delete.js';
+import deleteCmd from './delete.js';
 import updateCmd from './update.js';
 
 export default command({
@@ -8,11 +8,8 @@ export default command({
     ...deleteCmd.options,
     ...updateCmd.options,
   },
-  handler: async ({ data, fork }) => {
-    await fork({
-      commands: [deleteCmd],
-      optionValues: data,
-    });
-    fork({ commands: [updateCmd] });
+  handler: async ({ fork }) => {
+    await fork({ commands: [deleteCmd] });
+    return fork({ commands: [updateCmd] });
   },
 });
